@@ -4,6 +4,8 @@ import App from './App.vue'
 /* 引入vant样式 */
 /* import 'vant/lib/index.css'; */
 
+import './css/base.css'
+
 /* 引入rem布局有效 */
 import 'lib-flexible/flexible'
 

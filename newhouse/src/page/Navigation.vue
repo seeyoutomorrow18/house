@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="swap">
     <router-view />
     <div class="nav-box">
         <ul>
@@ -87,6 +87,9 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+.swap{
+  height: 100%;
+}
   .nav-box{
     width: 100%;
     height: 51.38px;
@@ -96,6 +99,7 @@ export default {
     ul{
       height: 37.5px;
        padding:6px;
+       text-align: center;
       li{
         float: left;
         width: 25%;
