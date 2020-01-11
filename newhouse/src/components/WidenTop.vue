@@ -30,6 +30,7 @@ export default {
         line-height: 45px;
         font-size: 20px;
         font-family: "微软雅黑" ;
+        font-weight: 700 ;
         color: #333 ;
     }
 </style>
