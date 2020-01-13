@@ -89,6 +89,7 @@ export default {
 <style lang="scss" scoped>
 .swap{
   height: 100%;
+  margin-bottom: 80px;
 }
   .nav-box{
     width: 100%;
@@ -96,8 +97,10 @@ export default {
     position: fixed;
     bottom: 0px;
     left:0px;
+    z-index: 1000;
+    background: #FFF;
     ul{
-      height: 37.5px;
+      height: 51.38px;
        padding:6px;
        text-align: center;
       li{
