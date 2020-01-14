@@ -7,6 +7,7 @@
             <a href="#" 
             :class="{active:item.path == cur}"
             @click.prevent="goto(item.path)"
+            v-if="!$route.meta.requiresAuth"
             >
               <van-icon :name="item.icon" />
               <span>{{ item.text }}</span>
@@ -48,9 +49,10 @@ export default {
             "text":"首页",
             "icon":"wap-home-o",
             "name":"home",
-            "path":"/home"
+            "path":"/home",
+            "meta":{}
           },
-          
+
           {
             "text":"地图找房",
             "icon":"location-o",
@@ -94,6 +96,7 @@ export default {
     width: 100%;
     height: 51.38px;
     position: fixed;
+    background: #fff;
     bottom: 0px;
     left:0px;
     ul{

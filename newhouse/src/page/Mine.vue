@@ -6,7 +6,7 @@
                     <van-icon name="chat-o" />
                     
                 </div>
-                <div class="message-icon">
+                <div class="message-icon"  @click="$router.push('/set')">
                     <van-icon name="setting-o" />
                 </div>
                 
@@ -75,8 +75,9 @@ export default {
                 }
                 .message-icon{
                     float: right;
-                    width: 45.83px;
+                    width: 40.83px;
                     height: 45.83px;
+                    margin-right: 5px;
                     .van-icon-setting-o{
                         color: #fff;
                         opacity: .8;
