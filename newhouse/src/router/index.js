@@ -9,15 +9,15 @@ import Home from '../page/Home.vue'
 import Map from '../page/Map.vue'
 import Widen from '../page/Widen.vue'
 import Mine from '../page/Mine.vue'
-
-
+import Set from '../page/Set.vue'
 /* 配置参数设置 */
 const router = new VueRouter({
     routes:[
         {
             name:'home',
             path:'/home',
-            component:Home
+            component:Home,
+          
         },
         {
             path: '/',
@@ -30,17 +30,27 @@ const router = new VueRouter({
         {
             name:'map',
             path:'/map',
-            component:Map
+            component:Map,
+           
         },
+        
         {
             name:'widen',
             path:'/widen',
-            component:Widen
+            component:Widen,
+          
         },
         {
             name:'mine',
             path:'/mine',
-            component:Mine
+            component:Mine,
+           
+        },
+        {
+            name:'set',
+            path:'/set',
+            component:Set,
+            meta:{requiresAuth:true}
         },
     ]
 })

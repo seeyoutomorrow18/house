@@ -87,6 +87,8 @@ export default {
         newHouse,
         Tool,
         Banner
+   
+        
     }
 }
 </script>
