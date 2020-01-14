@@ -68,6 +68,10 @@
     <navigation v-slot:title-housePrice>
         <h1>推荐楼盘</h1>
     </navigation>
+    <recommEnd></recommEnd>
+    <houseBanner></houseBanner>
+    <recommEnd></recommEnd>
+    <see-more></see-more>
 </div>
 </template>
 <script>
@@ -77,7 +81,11 @@ import bannerLsit from '../components/bannerlist'
 import navigation from '../components/navigation'
 import newHouse from '../components/new-house'
 import Tool from '../components/tool';
-import Banner from '../components/banner'
+import Banner from '../components/banner';
+import recommEnd from '../components/recommend'
+import houseBanner from '../components/house-banner'
+import seeMore from '../components/seemore'
+
 export default {
     components:{
         WidenTop,
@@ -86,7 +94,10 @@ export default {
         navigation,
         newHouse,
         Tool,
-        Banner
+        Banner,
+        recommEnd,
+        houseBanner,
+        seeMore
     }
 }
 </script>
