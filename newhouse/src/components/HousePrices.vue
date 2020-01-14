@@ -44,7 +44,7 @@ export default {
 
 <style lang="scss" scoped>
 .HousePrices{
-    margin-bottom: .80556rem;
+    margin-bottom: 30.2px;
         ul{
         align-items: center;
         display: flex;
@@ -57,20 +57,19 @@ export default {
                 margin-bottom: 10.417px;
                 .font39{
                     color: #666;
-                    font-size: .2963rem;
-                    margin-right: .03704rem;
+                    font-size:  12px;
                 }
                 span{
                     color: #f35454;
                 }
                 .data-tage{
                     background: #fff;
-                    border-radius: .05556rem;
+                    border-radius: 50%;
                     line-height: normal;
-                    margin-left: .16667rem;
-                    min-width: 1.11111rem;
+                    margin-left: 6.25px;
+                    min-width: 41px;
                     overflow: hidden;
-                    padding: .07407rem .10185rem;
+                    padding: 3px 4px;
                     text-align: center;
                     i{
                         background-image: url('../../public/img/up.png');
@@ -78,9 +77,9 @@ export default {
                     }
                     .icon-up{
                         display: inline-block;
-                        height: .24074rem;
-                        margin-right: .06481rem;
-                        width: .22222rem;
+                        height: 9px;
+                        margin-right: 2.43px;
+                        width: 8.33px;
                     }
                 }
             }

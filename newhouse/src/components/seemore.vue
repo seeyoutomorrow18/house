@@ -12,17 +12,17 @@ export default {
 
 <style lang='scss' scoped>
 .bottom-box{
-    padding: .36111rem .55556rem;
+    padding: 13.5px 21px;
     &:visited{
         color: inherit;
     }
     .bottom-btn{
         background: #f6f6f6;
-        border-radius: .08333rem;
+        border-radius: 1%;
         color: #999;
-        font-size: .41667rem;
-        height: 1.22222rem;
-        width: 333px;
+        font-size: 15px;
+        min-height: 45.833px;
+        width:85%;
     }
 }
 </style>

@@ -13,13 +13,13 @@ export default {
 
 <style lang='scss' scoped>
 .stance-img{
-    border-radius: .03704rem;
-    height: 2.08333rem;
-    margin-bottom: .37037rem;
+    border-radius: 1.5px;
+    height: 78.124px;
+    margin-bottom: 13.89px;
     overflow: hidden;
-    padding: 0 0.37037rem;
+    padding: 0 13.89px;
     img{
-        border-radius: .03704rem;
+        border-radius: 13.95px;
         display: block;
         height: 100%;
         overflow: hidden;

@@ -30,31 +30,32 @@ ul{
     display: flex;
     flex-direction: column;
     justify-content: space-around;
-    width: 100%;
-    margin: 0 .36111rem;
+    width: 96%;
+    margin: 0 13.54px;
     li{
+
         align-items: center;
         display: flex;
-        margin: .22222rem 0;
+        margin: 8px 0;
         span{
             border: 1px solid rgba(254,153,20,.3);
-            border-radius: .05556rem;
+            border-radius: 2.0835px;
             box-sizing: border-box;
             color: #fe9914;
             display: block;
-            font-size: .27778rem;
+            font-size: 10px;
             line-height: normal;
-            margin-right: .15741rem;
-            padding: .06481rem 0;
+            margin-right: 6px;
+            padding: 2.5px 0;
             position: relative;
             text-align: center;
-            width: 1.52778rem;
+            width: 14.5%;
         }
         p{
             color: #333;
             flex: 1;
-            font-size: .37037rem;
-            max-width: 285px;
+            font-size: 14px;
+            max-width: 80%;
             overflow: hidden;
             text-overflow: ellipsis;
             white-space: nowrap;

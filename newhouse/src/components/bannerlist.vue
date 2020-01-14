@@ -21,16 +21,16 @@ export default {
 .bannerlist{
     display: flex;
     justify-content: space-between;
-    margin-bottom: .91667rem;
-    padding: 0 .36111rem;
+    margin-bottom: 34.375px;
+    padding: 0 13.54px;
     .imgbox{
-        border-radius: .05556rem;
-        height: 2.08333rem;
+        border-radius: 2.1px;
+        height: 100%;
         overflow: hidden;
-        width: 4.52778rem;
+        width:45%;
         img{
-            height: 2.08333rem;
-            width: 4.52778rem;
+            height: 100%;
+            width: 100%;
         }
     }
 }
