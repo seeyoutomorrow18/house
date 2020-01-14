@@ -1,5 +1,5 @@
 <template>
-    <div class="glass">
+    <div class="glass" >
         <slot name="search"></slot>
     </div>
 </template>
@@ -16,5 +16,6 @@ export default {
         text-align: center;
         line-height: 45.83px;
         float: right;
+        font-size: 25px;
     }
 </style>

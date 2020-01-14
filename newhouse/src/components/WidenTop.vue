@@ -1,10 +1,10 @@
 <template>
     <div class="topheader">
-        <Retreat v-slot:retreat>
+        <Retreat v-slot:retreat >
             <van-icon name="arrow-left" />
         </Retreat>
         涨知识
-        <Glass></Glass>
+        <Glass v-slot:search></Glass>
     </div>
 </template>
 
@@ -24,13 +24,13 @@ export default {
 }
 </script>
 
-<style lang="scss" scoped>
+<style lang="scss" >
     .topheader{
         text-align: center ;
         line-height: 45px;
         font-size: 20px;
         font-family: "微软雅黑" ;
-        font-weight: 700 ;
+       background: #fff;
         color: #333 ;
     }
 </style>

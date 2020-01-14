@@ -1,6 +1,6 @@
 <template>
-    <div class="header-icon">
-        <slot name="retreat">11</slot>
+    <div class="header-icon" @click="$router.back() " >
+        <slot name="retreat"></slot>
     </div>
 </template>
 

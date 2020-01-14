@@ -14,6 +14,9 @@ import 'lib-flexible/flexible'
 import FastClick from 'fastclick'
 FastClick.attach(document.body) ;
 
+/* 引入axios */
+import axios from 'axios'
+Vue.prototype.$axios =  axios;  
 Vue.config.productionTip = false
 
 /* 导出路由 */
