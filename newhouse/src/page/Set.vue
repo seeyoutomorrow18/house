@@ -34,7 +34,7 @@
             </div>
         </li>
     </ul>
-    <div class="logoiout">退出登录</div>
+    <div class="logoiout"  @click="loginout">退出登录</div>
   </div>
 </template>
 
@@ -50,7 +50,20 @@ export default {
     components:{
         Retreat,
         Glass
-    }
+    },
+    methods: {
+        loginout(){
+            localStorage.removeItem('Authorization');
+            this.$router.push({
+                        path:'/login',
+                        query:{
+                            // redirectUrl:this.$route.path
+                            redirectUrl:'/home'
+                        }
+        
+                    })
+        }
+    },
 };
 </script>
 

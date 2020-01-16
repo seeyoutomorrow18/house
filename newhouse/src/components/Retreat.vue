@@ -13,10 +13,10 @@ export default {
 <style lang="scss" scoped>
     .header-icon{
         float: left;
-        width: 45.83px;
+        width: 12%;
         height: 45.83px;
         text-align: center;
-        line-height: 45.83px;
+        line-height: 50px;
         font-size: 25px;
     }
 </style>

@@ -1,8 +1,9 @@
 <template>
-    <div class="glass" >
-        <slot name="search"></slot>
+    <div class="emoji">
+        <slot name="emoji"></slot>
     </div>
 </template>
+
 <script>
 export default {
     
@@ -10,12 +11,13 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-    .glass{
+    .emoji{
         width: 12%;
         height: 45.83px;
-        text-align: center;
         line-height: 45.83px;
+        text-align: center ;
+        font-size: 15.6px;
+        color: #666;
         float: right;
-        font-size: 25px;
     }
 </style>
