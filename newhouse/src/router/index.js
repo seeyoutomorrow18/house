@@ -16,6 +16,8 @@ import Set from '../page/Set.vue'
 import Collect from '../page/Collect.vue'
 import Login from '../page/Login.vue'
 import Reg from '../page/Reg.vue'
+import Search from '../page/search.vue'
+import Details from '../page/details.vue'
 /* 配置参数设置 */
 const router = new VueRouter({
     routes:[
@@ -26,12 +28,24 @@ const router = new VueRouter({
           
         },
         {
+            name:'searh',
+            path:'/searh',
+            component:Search,
+          
+        },
+        {
             path: '/',
             redirect: '/home'
         },
         {
             path:'/',
             redirect:'/home'
+        },
+        {
+            name:'details',
+            path:'/details',
+            component:Details,
+          
         },
         {
             name:'map',

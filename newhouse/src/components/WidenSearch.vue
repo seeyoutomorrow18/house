@@ -3,23 +3,27 @@
         <Retreat v-slot:retreat >
             <van-icon name="arrow-left" />
         </Retreat>
-        涨知识
-        <Glass>
-        </Glass>
+        <van-search placeholder="请输入搜索关键词"  v-model="value"/>
     </div>
 </template>
 
 <script>
 import Vue from 'vue';
 import { Icon } from 'vant';
+import { Search } from 'vant';
+
+Vue.use(Search);
 Vue.use(Icon);
 
 import Retreat from './Retreat'
-import Glass from './Glass'
 export default {
+    data:function(){
+        return {
+            value:''
+        }
+    },
     components:{
         Retreat,
-        Glass
 
     }
 }
@@ -33,10 +37,17 @@ export default {
         font-family: "微软雅黑" ;
        background: #fff;
         color: #333 ;
+        width: 100%;
         img{
             width: 60%;
             height: 50%;
-
+        }
+        .van-search{
+            height: 100%;
+            padding: 4px;
+        }
+        .van-search__content{
+            border-radius: 15.62px;
         }
     }
 </style>

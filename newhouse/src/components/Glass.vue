@@ -1,6 +1,7 @@
 <template>
-    <div class="glass" >
+    <div class="glass">
         <slot name="search"></slot>
+        <slot name='spot'> </slot>
     </div>
 </template>
 <script>

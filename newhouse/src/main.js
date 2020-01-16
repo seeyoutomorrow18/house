@@ -1,6 +1,8 @@
 import Vue from 'vue'
 import App from './App.vue'
 
+
+Vue.use(Swipe).use(SwipeItem)
 /* 引入vant样式 */
 /* import 'vant/lib/index.css'; */
 
