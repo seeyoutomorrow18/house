@@ -1,13 +1,13 @@
 <template>
   <div class="swap">
     <router-view />
-    <div class="nav-box" v-if="!$route.meta.isok">
-        <ul >
+    <div class="nav-box">
+        <ul>
           <li v-for="item in naviga" :key="item.name">
             <a href="#" 
             :class="{active:item.path == cur}"
             @click.prevent="goto(item.path)"
-            
+            v-if="!$route.meta.requiresAuth"
             >
               <van-icon :name="item.icon" />
               <span>{{ item.text }}</span>
@@ -76,7 +76,7 @@ export default {
     };
   },
   created(){
- 
+  console.log(this.$route)
   this.cur = this.$route.path;
   },
   methods:{
@@ -92,6 +92,7 @@ export default {
 .swap{
   width: 100%;
   height: 100%;
+  margin-bottom: 80px;
 }
   .nav-box{
     width: 100%;

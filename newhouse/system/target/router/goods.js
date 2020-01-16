@@ -74,13 +74,15 @@ Router.put('/',async(req,res)=>{
 
 ////////////////////////////////////////////////////////////////////////
 
-/* 列表页接口 http://localhost:3000/goods/list */
+/* 接口 http://localhost:3000/goods/list */
 Router.get('/list',async(req,res)=>{
+    
     let data = await get(colName1,req.query);
+    
     res.send(data);
 }) 
 
-/* 详情页接口 http://localhost:3000/goods/detail */
+
 Router.get('/detail',async(req,res)=>{
     let data = await look(colName1,req.query);
     res.send(data);

@@ -21,7 +21,7 @@ function connect(){
 // 数据的查询接口
 /**
  * @传入参数 min~max 范围  ;  num 每页的条数  ;  page  页码
- * 
+ *           page && num && dim
  * @param {string} colName1 集合名称
  * @param {object} query   查询条件  
  * @param {object} target  配置条件
@@ -38,9 +38,9 @@ async function get(colName1,query ){
     
         let data
         if(min && max && page && num){
-            data = await col.find({HaAveragePrice:{$gt:Number(min),$lt:Number(max)}}).skip(Number(index)).limit(Number(num)).toArray()
+            data = await col.find({haAveragePrice:{$gt:Number(min),$lt:Number(max)}}).skip(Number(index)).limit(Number(num)).toArray()
         }else if(page && num && dim) {
-            data = await col.find({R_HouseTypeName:new RegExp(target)}).skip(Number(index)).limit(Number(num)).toArray() 
+            data = await col.find({r_HouseTypeName:new RegExp(target)}).skip(Number(index)).limit(Number(num)).toArray() 
         }
         
         // 4.关闭数据库

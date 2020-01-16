@@ -8,10 +8,6 @@ const Router = express.Router() ;
 const { remove } = require('../data/mongo') ;
 const {find, change, add } = require('../data/extra') ;
 const {checkusername ,increase } = require('../data/webuser') ;
-
-const { token } = require('../utils')
-
-
 // mongoDB数据库的集合名
 const colName2 = 'users' ;
 
@@ -70,17 +66,7 @@ Router.get('/check',async(req,res)=>{
     }else{
          data = await checkusername(colName2,{username}) 
     }
-
-    if(data.length>0){
-        let Authorization = token.create({username})
-        console.log(Authorization)
-        console.log(1)
-        res.send([{"Authorization":Authorization}])
-    }else{
-        res.send([]) ;
-        console.log(2)
-    }
-    /* res.send(data) ; */
+    res.send(data) ;
 })
 
 /* 添加用户 */

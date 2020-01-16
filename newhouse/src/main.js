@@ -1,11 +1,11 @@
 import Vue from 'vue'
 import App from './App.vue'
+import { Swipe, SwipeItem } from 'vant';
 
 
 Vue.use(Swipe).use(SwipeItem)
 /* 引入vant样式 */
-/* import 'vant/lib/index.css'; */
-
+ import '../node_modules/vant/lib/index.css';
 import './css/base.css'
 
 /* 引入rem布局有效 */
@@ -26,6 +26,6 @@ new Vue({
   router,
   render: h => h(App),
   created() {
-   /*  console.log(router) */
+    console.log(router)
   },
 }).$mount('#app')

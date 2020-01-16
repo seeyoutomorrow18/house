@@ -12,7 +12,7 @@ export default {
 
 <style lang="scss" scoped>
     .glass{
-        width: 12%;
+        width: 45.83px;
         height: 45.83px;
         text-align: center;
         line-height: 45.83px;

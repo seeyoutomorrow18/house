@@ -3,7 +3,8 @@
         <div class="m-container">
             <div class="header-box">
                 <div class="setting-icon">
-                    <van-icon name="chat-o" />  
+                    <van-icon name="chat-o" />
+                    
                 </div>
                 <div class="message-icon"  @click="$router.push('/set')">
                     <van-icon name="setting-o" />
@@ -27,11 +28,11 @@
                         <img src="../../public/img/mine2.png" alt="">
                         <h1>优惠券</h1>
                     </li>
-                    <li @click="$router.push('/collect')">
+                    <li>
                         <img src="../../public/img/mine3.png" alt="">
                         <h1>我的收藏</h1>
                     </li>
-                    <li @click="$router.push('/login')">
+                    <li>
                         <img src="../../public/img/mine4.png" alt="">
                         <h1>我的报备</h1>
                     </li>
