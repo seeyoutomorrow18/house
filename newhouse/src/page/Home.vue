@@ -71,13 +71,13 @@
     </navigation>
     <recommEnd></recommEnd>
    <houseBanner></houseBanner>
-   <recommEnd></recommEnd>
+   <recommEndtwo></recommEndtwo>
     <see-more></see-more> 
 </div>
 </div>
 </template>
 <script>
-import WidenTop from '../components/WidenTop'
+import WidenTop from '../components/home-Widen'
 import HouserPrices from '../components/HousePrices'
 import bannerLsit from '../components/bannerlist'
 import navigation from '../components/navigation'
@@ -85,6 +85,8 @@ import newHouse from '../components/new-house'
 import Tool from '../components/tool';
 import Banner from '../components/banner';
 import recommEnd from '../components/recommend'
+import recommEndtwo from '../components/recommend2'
+
 import houseBanner from '../components/house-banner'
 import seeMore from '../components/seemore'
 
@@ -99,7 +101,8 @@ export default {
         Banner,
         recommEnd,
         houseBanner,
-        seeMore
+        seeMore,
+        recommEndtwo
     }
 }
 </script>

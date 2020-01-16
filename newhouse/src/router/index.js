@@ -10,6 +10,8 @@ import Map from '../page/Map.vue'
 import Widen from '../page/Widen.vue'
 import Mine from '../page/Mine.vue'
 import Set from '../page/Set.vue'
+import Search from '../page/search.vue'
+import Details from '../page/details.vue'
 /* 配置参数设置 */
 const router = new VueRouter({
     routes:[
@@ -20,12 +22,24 @@ const router = new VueRouter({
           
         },
         {
+            name:'searh',
+            path:'/searh',
+            component:Search,
+          
+        },
+        {
             path: '/',
             redirect: '/home'
         },
         {
             path:'/',
             redirect:'/home'
+        },
+        {
+            name:'details',
+            path:'/details',
+            component:Details,
+          
         },
         {
             name:'map',

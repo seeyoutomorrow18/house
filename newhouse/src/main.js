@@ -2,6 +2,7 @@ import Vue from 'vue'
 import App from './App.vue'
 import { Swipe, SwipeItem } from 'vant';
 
+
 Vue.use(Swipe).use(SwipeItem)
 /* 引入vant样式 */
  import '../node_modules/vant/lib/index.css';

@@ -4,7 +4,8 @@
             <van-icon name="arrow-left" />
         </Retreat>
         涨知识
-        <Glass>
+        <Glass v-slot:search>
+            <van-icon name="search" @click="$router.push('/searh')" />
         </Glass>
     </div>
 </template>

@@ -4,7 +4,6 @@
             <li v-for="(item) in houseData"  :key='item.goodsCode'>
                 <div class="imgbox">
                     <img :src="item.imageUrl" lazy="loaded">
-                    <span>推荐看房</span>
                 </div>
                 <div class="hosueinfo">
                     <p class="main_title" v-text="item.goodsEstate"></p>
@@ -36,7 +35,7 @@ export default {
     async created(){
         let {data}=await this.$axios.get('https://newhouseapi.apyfc.com/api/Selected/IndexV2');
         console.log(data);
-        this.houseData=data.data.houseData.splice(0,10);
+        this.houseData=data.data.houseData.splice(10,10);
         console.log(this.houseData,'564554');
         
     }
@@ -89,7 +88,7 @@ export default {
                 overflow: hidden;
                 .main_title{
                     color: #333;
-                    font-size: 15.625px;
+                    font-size: 16px;
                     font-weight: 700;
                     line-height: normal;
                     overflow: hidden;
