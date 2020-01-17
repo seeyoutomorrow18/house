@@ -3,8 +3,7 @@
         <div class="m-container">
             <div class="header-box">
                 <div class="setting-icon">
-                    <van-icon name="chat-o" />
-                    
+                    <van-icon name="chat-o" />  
                 </div>
                 <div class="message-icon"  @click="$router.push('/set')">
                     <van-icon name="setting-o" />
@@ -16,7 +15,7 @@
                 <div class="bluebg">
                     <div class="userimgbox">
                         <img src="http://www.apyfc.com/assets/img/default/img_head_big.png" alt="">
-                        <div class="name">G-Lose</div>
+                        <div class="name">{{text}}</div>
                     </div>
                 </div>
                 <ul class="mine-nav-box">
@@ -28,11 +27,11 @@
                         <img src="../../public/img/mine2.png" alt="">
                         <h1>优惠券</h1>
                     </li>
-                    <li>
+                    <li @click="$router.push('/collect')">
                         <img src="../../public/img/mine3.png" alt="">
                         <h1>我的收藏</h1>
                     </li>
-                    <li>
+                    <li >
                         <img src="../../public/img/mine4.png" alt="">
                         <h1>我的报备</h1>
                     </li>
@@ -48,7 +47,16 @@
 
 <script>
 export default {
+    data(){
+        return{
+            text:''
+        }
+    },
    
+   created(){
+       this.text = localStorage.getItem('username')
+       console.log(this.text)
+   }
 }
 </script>
 

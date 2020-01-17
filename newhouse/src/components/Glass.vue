@@ -1,7 +1,6 @@
 <template>
-    <div class="glass">
+    <div class="glass" >
         <slot name="search"></slot>
-        <slot name='spot'> </slot>
     </div>
 </template>
 <script>
@@ -12,7 +11,7 @@ export default {
 
 <style lang="scss" scoped>
     .glass{
-        width: 45.83px;
+        width: 12%;
         height: 45.83px;
         text-align: center;
         line-height: 45.83px;

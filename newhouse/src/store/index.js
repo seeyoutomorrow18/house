@@ -1,7 +1,7 @@
 import Vue from 'vue'
 
 // 引入Vuex
-import Vuex from 'vue' ;
+import Vuex from 'vuex' ;
 
 // 使用store
 Vue.use(Vuex) 

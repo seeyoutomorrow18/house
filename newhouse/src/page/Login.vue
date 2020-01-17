@@ -56,10 +56,15 @@ export default {
                 
                 if(data.length){
                     let Authorization = data[0].Authorization 
+                    localStorage.setItem('username',this.username)
                     localStorage.setItem('Authorization',Authorization)
                     let { redirectUrl } = this.$route.query || '/mine'
-                    console.log(redirectUrl,'denglv')
-                    this.$router.replace(redirectUrl)
+                    if( redirectUrl==undefined ){
+                        this.$router.replace('/mine')
+                    }else{
+                        this.$router.replace(redirectUrl)
+                    }
+                    
                 }else{
                     alert('网络繁忙，登录失败')
                 }
