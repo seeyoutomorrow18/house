@@ -1,7 +1,7 @@
 <template>
     <div class="beforeList">
         <ul>
-            <li v-for="(item) in houseData"  :key='item.goodsCode' @click='details(item.goodsCode,)'>
+            <li v-for="(item) in houseData"  :key='item.goodsCode'>
                 <div class="imgbox">
                     <img :src="item.imageUrl" lazy="loaded">
                 </div>
@@ -38,11 +38,6 @@ export default {
         this.houseData=data.data.houseData.splice(10,10);
         console.log(this.houseData,'564554');
         
-    },
-        methods:{
-                details(GoodsCode){
-           this.$router.push({path:'/details',query:{GoodsCode}})
-        },
     }
 }
 </script>

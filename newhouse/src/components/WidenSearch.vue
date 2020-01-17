@@ -6,7 +6,7 @@
         <Retreat v-slot:retreat >
             <van-icon name="arrow-left" />
         </Retreat>
-        <van-search placeholder="请输入搜索关键词" v-model="value" @keyup.13="search()"/>
+        <van-search placeholder="请输入搜索关键词"  v-model="value"/>
     </div>
     <Sort></Sort>
 </div>
@@ -23,26 +23,15 @@ Vue.use(Icon);
 import Retreat from './Retreat'
 import Sort from './sort'
 export default {
-    props:['value'],
     data:function(){
         return {
-            page:1,
-            num:20,
-            houseData:[]
+            value:''
         }
     },
     components:{
         Retreat,
         Sort
-    },
-    methods:{
-        async search(){
-                let {data}=await this.$axios.get(`http://localhost:3000/goods/list?page=1&num=10&dim=1`);
-
-                this.houseData=data
-        }
-    },
-
+    }
 }
 </script>
 

@@ -21,7 +21,6 @@
           :key="item.num"
           @touchstart="touchstart"
           @touchmove="touchmove"
-          :style="{height:min}"
         >
         <section v-for="item in item.data" :key="item.data_id"><!-- {{item}} -->
             <div class="fl">
@@ -54,7 +53,6 @@ import WidenTop from "../components/WidenTop";
 export default {
   data() {
     return {
-      min:"2120",
       cur: "热点",
       datalist:["热点","信息","数据","规划","拍地","政策"],
       startPointX: 0,
@@ -689,7 +687,6 @@ export default {
       },
     show(index) {
        this.cur = this.datalist[index]
-       this.min = document.querySelectorAll(".sliderlist")[index].children.length * 106 + 'px'
       if(0<= index < 5){
           this.changePointX = this.startPointX;
           let slider = document.getElementById("slider");
@@ -715,7 +712,7 @@ export default {
   }
 };
 </script>
-
++
 <style lang="scss" scoped>
     .widencontent{
         width: 100% ;
