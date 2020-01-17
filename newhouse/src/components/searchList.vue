@@ -1,25 +1,30 @@
 <template>
     <div class="beforeList">
         <ul>
-            <li v-for="(item) in houseData"  :key='item.goodsCode' @click="$router.push('/details')">
+            <li v-for="item in houseData"  :key='item.GoodsCode'  @click='details(item.GoodsCode,)'>
                 <div class="imgbox">
-                    <img :src="item.imageUrl" lazy="loaded">
+                    <img :src="item.ImageUrl" lazy="loaded">
                 </div>
                 <div class="hosueinfo">
-                    <p class="main_title" v-text="item.goodsEstate"></p>
+                    <p class="main_title" >{{item.GoodsEstate}}</p>
                     <p class="area-content">
-                        <span class="area_text" v-text="item.cityName+`.`+item.areaName"></span>
-                        <span class="tagbox redbg" v-text="item.postmark"></span>
+                        <span class="area_text" v-text="item.CityName+`.`+item.AreaName"></span>
+                        <span class="tagbox redbg" v-text="item.Postmark"></span>
                     </p>
                     <p class="adress-text">
-                        <span v-text="item.coreValue+'/'"></span>
-                        <span v-text="item.r_AcreageRangeName+'/'"></span>
-                        <span v-text="item.r_HouseTypeName"></span>
+                        <span v-text="item.CoreValue+'/'"></span>
+                        <span v-text="item.R_AcreageRangeName+'/'"></span>
+                        <span v-text="item.R_HouseTypeName"></span>
                     </p>
-                    <p class="house-price" v-text="item.averagePrice"></p>
+                    <p class="house-price" v-text="item.AveragePrice"></p>
                 </div>
             </li>
         </ul>
+        <div class="button">
+            <input type="button" :class="{active:Prev}" value='   上一页    ' id='prev' @click="prev() ">
+            <input type="text" name="" id="page" v-model="page" @keyup.13="To()">
+            <input type="button" :class="{active:Next}" value='   下一页   ' id='next' @click="next()">
+        </div>
     </div>
 </template>
 
@@ -28,16 +33,69 @@
 export default {
     data(){
         return {
-            houseData:[]
+            houseData:[],
+            num:20,
+            page:1,
+            Prev:false,
+            Next:false,
+            min:0,
+            max:25000
         }
     },
 
     async created(){
-        let {data}=await this.$axios.get('https://newhouseapi.apyfc.com/api/Selected/IndexV2');
-        console.log(data);
-        this.houseData=data.data.houseData
+
+        let {data}=await this.$axios.get(`http://localhost:3000/goods/list?min=${this.min}&max=${this.max}&page=${this.page}&num=${this.num}`);
+        this.houseData=data
         console.log(this.houseData,'564554');
-        
+        this.prev();
+        this.next();
+        this.To()
+    },
+    methods:{
+        details(GoodsCode){
+           this.$router.push({path:'/details',query:{GoodsCode}})
+        },
+        async prev(){
+            this.Next=false;
+            console.log(this.Next);
+            
+            
+            this.Prev=true
+            console.log(this.Prev);
+            this.page--
+            if(this.page<=7&&this.page>0){
+                let {data}=await this.$axios.get(`http://localhost:3000/goods/list?min=${this.min}&max=${this.max}&page=${this.page}&num=${this.num}`);
+
+                this.houseData=data
+            }else{
+                this.page=1
+            }
+        },
+        async next(){
+            this.Prev=false
+            console.log(this.Prev);
+
+            this.Next=true;
+            console.log(this.Next);
+            
+            this.page++
+            if(this.page<=7&&this.page>0){
+                let {data}=await this.$axios.get(`http://localhost:3000/goods/list?min=${this.min}&max=${this.max}&page=${this.page}&num=${this.num}`);
+
+                this.houseData=data
+            }else{
+                this.page=7
+            }
+        },
+        async To(){
+            if(this.page<=7&&this.page>0){
+                let {data}=await this.$axios.get(`http://localhost:3000/goods/list?min=${this.min}&max=${this.max}&page=${this.page}&num=${this.num}`);
+
+                this.houseData=data
+            }
+           
+        }
     }
 }
 </script>
@@ -54,7 +112,7 @@ export default {
             padding: 13.194px 0;
             .imgbox {
                 border-radius: 3px;
-                height: 100%;
+                height: 85px;
                 margin-right: 13.888px;
                 overflow: hidden;
                 position: relative;
@@ -129,6 +187,29 @@ export default {
                     line-height: normal;
                 }
             }
+        }
+    }
+    .button{
+        display: flex;
+        width: 100%;
+        height: 30px;
+        justify-content: space-around;
+        align-items: center;
+        .active{
+            background: #1989fa;
+        }
+        #prev,#next{
+            display: block;
+            height: 30px;
+            border-radius: 8px;
+        }
+        #page{
+            width: 30%;
+            height: 30px;
+            border:1px solid #1989fa;
+            border-radius:8px ;
+            text-align: center;
+            line-height: 30px;
         }
     }
 }

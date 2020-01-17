@@ -41,7 +41,7 @@
     </van-swipe>
     <navigation v-slot:new-headlines v-slot:icon >
         <h1>新房头条</h1>
-        <i></i>
+        <i @click="$router.push('/widen')"></i>
     </navigation>
     <new-house></new-house>
      <navigation v-slot:Tools>

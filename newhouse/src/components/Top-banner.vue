@@ -5,11 +5,11 @@
             <div class="mint-swipe-items-wrap">
                 <div class="mint-swipe-item">
                     <div class="bannerimgbox">
-                        <img class="bannerimg" src="https://resource.apyfc.com/UploadImage/1/1/5002/2019/11/2019-11-11/201911111414147762763.jpg" lazy="loaded">
+                        <img class="bannerimg" :src="goodlist.ImageUrl" lazy="loaded">
                     </div>
                 </div>
             </div>
-            <font class="hosuetitle">嘉霖·深湾1号</font>
+            <font class="hosuetitle" v-text="this.goodlist.GoodsEstate"></font>
             <span class="indexbox">共15张</span>
         </div>
     </div>
@@ -17,8 +17,18 @@
 </template>
 
 <script>
+
 export default {
-    
+    props:[ "goodlist"],
+        data:function(){
+        return {
+            goodLsit:''
+        }
+    },
+    created(){
+        console.log(this.goodlist,'sadasd');
+        this.goodLsit=this.goodlist;
+    }
 }
 </script>
 

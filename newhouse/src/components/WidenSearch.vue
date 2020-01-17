@@ -1,10 +1,15 @@
 <template>
+<div class="top">
+
+
     <div class="topheader">
         <Retreat v-slot:retreat >
             <van-icon name="arrow-left" />
         </Retreat>
         <van-search placeholder="请输入搜索关键词"  v-model="value"/>
     </div>
+    <Sort></Sort>
+</div>
 </template>
 
 <script>
@@ -16,6 +21,7 @@ Vue.use(Search);
 Vue.use(Icon);
 
 import Retreat from './Retreat'
+import Sort from './sort'
 export default {
     data:function(){
         return {
@@ -24,18 +30,19 @@ export default {
     },
     components:{
         Retreat,
-
+        Sort
     }
 }
 </script>
 
 <style lang="scss" >
+
     .topheader{
         text-align: center ;
         line-height: 45px;
         font-size: 20px;
         font-family: "微软雅黑" ;
-       background: #fff;
+        background: #fff;
         color: #333 ;
         width: 100%;
         img{

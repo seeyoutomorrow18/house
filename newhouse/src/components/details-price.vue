@@ -6,14 +6,14 @@
         <ul  class="data-box">
             <li  class="lastweek">
                 <p  class="type-name">
-                    <font  class="font39">上周横沥镇均价</font>
+                    <font  class="font39" v-text="'上周'+this.goodlist.AreaName+'均价'"></font>
                     <span  class="data-tag bggreen">
                         <i  class="icon"></i>
                         <font  class="number">0%</font>
                     </span>
                 </p>
                 <p  class="numberbottom">
-                    <font  class="font120blue">15388</font>
+                    <font  class="font120blue" v-text="this.goodlist.HaAveragePrice"></font>
                     <font  class="unit">元/m²</font>
                 </p>
             </li>
@@ -23,7 +23,16 @@
 
 <script>
 export default {
-    
+    props:[ "goodlist"],
+        data:function(){
+        return {
+            goodLsit:''
+        }
+    },
+        created(){
+        console.log(this.goodlist,'sadasd');
+        this.goodLsit=this.goodlist;
+    }
 }
 </script>
 

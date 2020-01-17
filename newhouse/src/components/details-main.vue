@@ -1,10 +1,10 @@
 <template>
 <div>
-    <Topbanner></Topbanner>
+    <Topbanner :goodlist='goodlist'></Topbanner>
     <div class="details-main-content">
-        <HouseInfo></HouseInfo>
-        <Welfare></Welfare>
-        <Price></Price>
+        <HouseInfo :goodlist='goodlist'></HouseInfo>
+        <Welfare ></Welfare>
+        <Price :goodlist='goodlist'></Price>
         <ToolBox></ToolBox>
     </div>
 </div>
@@ -17,14 +17,15 @@ import Welfare from './welfare-content'
 import Price from './details-price'
 import ToolBox from './tool-box'
 
-
 export default {
+    props:[ "goodlist"],
+
     components:{
         HouseInfo,
         Topbanner,
         Welfare,
         Price,
-        ToolBox
+        ToolBox,
     }
 }
 </script>
@@ -37,4 +38,5 @@ export default {
     top: -10.4165px;
     width: 100%;
 }
+
 </style>

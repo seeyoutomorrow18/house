@@ -2,8 +2,8 @@
     <div class="topheader">
         <Retreat v-slot:retreat >
             <van-icon name="arrow-left" />
-        </Retreat>
-        <slot name='title'/>
+        </Retreat> 
+        <slot name='title'>{{this.goodlist.GoodsEstate}}</slot>
         <Glass v-slot:spot>
             <van-icon name="more-o" />
         </Glass>
@@ -14,12 +14,24 @@
 import Retreat from './Retreat'
 import Glass from './Glass'
 
+
+
 export default {
+    props:[ "goodlist"],
+    data:function(){
+        return {
+            goodLsit:''
+        }
+    },
     components:{
         Retreat,
         Glass
 
-    } 
+    } ,
+    created(){
+        console.log(this.goodlist,'sadasd');
+        this.goodLsit=this.goodlist;
+    }
 }
 </script>
 

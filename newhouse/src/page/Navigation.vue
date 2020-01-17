@@ -1,7 +1,7 @@
 <template>
   <div class="swap">
     <router-view />
-    <div class="nav-box">
+    <div class="nav-box" v-if="!$route.meta.isok">
         <ul>
           <li v-for="item in naviga" :key="item.name">
             <a href="#" 

@@ -6,6 +6,9 @@ const Router = express.Router() ;
 // 使用中间件使得请求体的类型转化
 Router.use(express.json(),express.urlencoded({extended:false}))
 
+const { token } = require('../utils')
+
+
 // //CORS解决跨域
 // Router.use((req, res, next) => {
 //     let AllowOrigin = ['http://localhost:8080', 'http://localhost:8081','http://localhost:3000']
@@ -51,6 +54,17 @@ const usersRouter = require('./users') ;
 // 路由设置
 Router.use('/goods',goodsRouter) ;
 Router.use('/users',usersRouter) ;
+
+Router.get('/verify',(req,res)=>{
+    // 获取请求头的token
+    let Authorization = req.get('Authorization')
+    if(token.verify(Authorization)){
+        
+        res.send(true)
+    }else{
+        res.send(false)
+    }
+})
 /* Router.use('/option',optionRouter) ; */
 // 导出模块
 module.exports = Router ;

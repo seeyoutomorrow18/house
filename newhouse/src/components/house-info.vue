@@ -2,21 +2,21 @@
     <ul>
         <li class="item-info">
             <font>洋房</font>
-            <font class="redcolor">15500</font>
+            <font class="redcolor" v-text="this.goodlist.HaAveragePrice"></font>
             <font class="redcolor font21">元/m²</font>
-            <font class="Acreage-right">99-153㎡</font>
-            <font >3-4房</font>
+            <font class="Acreage-right" v-text="this.goodlist.R_AcreageRangeName"></font>
+            <font v-text="this.goodlist.R_HouseTypeName"></font>
         </li>
         <li class="item-info">
             <font>别墅</font>
             <font class="redcolor">待售</font>
-            <font class="redcolor font21">元/m²</font>
-            <font class="Acreage-right">237-308㎡</font>
-            <font >3-5房</font>
+            <font class="redcolor font21" >元/m²</font>
+            <font class="Acreage-right" v-text="this.goodlist.R_AcreageRangeName" ></font>
+            <font v-text="this.goodlist.R_HouseTypeName"></font>
         </li>
         <li class="item-info-adress item-info">
             <font>地址</font>
-            <p class="addresstext">广东省 东莞市 横沥镇 新四村北环路(松山湖·生态园职教城旁</p>
+            <p class="addresstext" v-text="this.goodlist.ProvinceName+' '+this.goodlist.CityName+' '+this.goodlist.AreaName"></p>
             <i class="adress-icon"></i>
         </li>
     </ul>
@@ -25,7 +25,16 @@
 <script>
 
 export default {
-    
+    props:[ "goodlist"],
+    data:function(){
+        return {
+            goodLsit:''
+        }
+    },
+        created(){
+        console.log(this.goodlist,'sadasd');
+        this.goodLsit=this.goodlist;
+    }
 }
 </script>
 

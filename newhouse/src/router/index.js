@@ -25,21 +25,23 @@ const router = new VueRouter({
             name:'searh',
             path:'/searh',
             component:Search,
-          
+            meta:{
+                requiresAuth:true,
+                isok:true
+            }
         },
         {
             path: '/',
             redirect: '/home'
         },
         {
-            path:'/',
-            redirect:'/home'
-        },
-        {
             name:'details',
             path:'/details',
             component:Details,
-          
+            meta:{
+                requiresAuth:true,
+                isok:true
+            }
         },
         {
             name:'map',
