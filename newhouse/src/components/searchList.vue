@@ -6,7 +6,7 @@
                     <img :src="item.ImageUrl" lazy="loaded">
                 </div>
                 <div class="hosueinfo">
-                    <p class="main_title" >{{item.GoodsEstate}}</p>
+                    <p class="main_title" v-text="item.GoodsEstate"></p>
                     <p class="area-content">
                         <span class="area_text" v-text="item.CityName+`.`+item.AreaName"></span>
                         <span class="tagbox redbg" v-text="item.Postmark"></span>

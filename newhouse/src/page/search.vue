@@ -1,6 +1,6 @@
 <template>
 <div>
-    <WidenTop ></WidenTop>
+    <WidenTop :value='value' :search='search()' ></WidenTop>
     <search-list></search-list>
  </div>   
 </template>
@@ -12,9 +12,24 @@ import WidenTop from '../components/WidenSearch'
 import searchList from '../components/searchList'
 
 export default {
+    data:function(){
+        return {
+            value:'',
+            page:1,
+            num:20,
+            houseData:[]
+        }
+    },
     components:{
         WidenTop,
         searchList
+    },
+        methods:{
+        async search(){
+                let {data}=await this.$axios.get(`http://localhost:3000/goods/list?page=${this.page}&num=${this.num}&dim=${this.value}`);
+
+                this.houseData=data
+        }
     }
 }
 </script>
