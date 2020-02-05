@@ -34,7 +34,7 @@
             </div>
         </li>
     </ul>
-    <div class="logoiout">退出登录</div>
+    <div class="logoiout"  @click="loginout">退出登录</div>
   </div>
 </template>
 
@@ -46,11 +46,25 @@ Vue.use(Icon);
 import Retreat from "../components/Retreat";
 import Glass from "../components/Glass";
 
+
 export default {
     components:{
         Retreat,
         Glass
-    }
+    },
+    methods: {
+        loginout(){
+            localStorage.removeItem('Authorization');
+            this.$router.push({
+                        path:'/login',
+                        query:{
+                            redirectUrl:'/home'
+                        }
+        
+                    })
+        },
+
+    },
 };
 </script>
 
