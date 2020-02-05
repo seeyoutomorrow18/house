@@ -4,7 +4,8 @@
             <van-icon name="arrow-left" />
         </Retreat>
         涨知识
-        <Glass v-slot:search></Glass>
+        <Glass>
+        </Glass>
     </div>
 </template>
 
@@ -32,5 +33,10 @@ export default {
         font-family: "微软雅黑" ;
        background: #fff;
         color: #333 ;
+        img{
+            width: 60%;
+            height: 50%;
+
+        }
     }
 </style>

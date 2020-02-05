@@ -6,11 +6,10 @@ const Router = express.Router() ;
 
 // 导入文件
 const {find,remove,add,change} = require('../data/mongo') ; 
-const {get ,look} = require('../data/weblist')  
-const {seek ,omit ,fortify ,amend ,amendall ,amendall1} = require('../data/carlist')
+const {get ,look} = require('../data/weblist')
 // mongoDB数据库的集合名
 const colName1 = 'list';
-const colName2 = 'cartlist';
+
 // 测试路由
 // Router.get('/',(req,res)=>{
 //     console.log('goods路由') ;
@@ -77,7 +76,11 @@ Router.put('/',async(req,res)=>{
 
 /* 列表页接口 http://localhost:3000/goods/list */
 Router.get('/list',async(req,res)=>{
+    console.log(req.query);
+    
     let data = await get(colName1,req.query);
+    console.log('55555',data);
+    
     res.send(data);
 }) 
 
@@ -87,45 +90,6 @@ Router.get('/detail',async(req,res)=>{
     res.send(data);
 }) 
 
-/* 购物车查找 */
 
-/* 查询购物车全部商品的接口: http://localhost:3000/goods/carlist */
-Router.get('/carlist',async(req,res)=>{
-    console.log(111)
-    let data = await seek(colName2,req.query)
-    res.send(data)
-})
-
-/* 删除数据 */
-Router.delete('/carlist',async(req,res)=>{
-    let data = await omit(colName2,req.body) ;
-    res.send(data)
-})
-
-/* 数据的增加 */
-Router.post('/carlist',async(req,res)=>{
-    let data = await fortify(colName2,req.body) ;
-    res.send(data)
-})
-
-/* 修改数据 */
-Router.put('/carlist',async(req,res)=>{
-    let { GoodsCode,status } = req.body
-    let data = await amend(colName2,{ GoodsCode },{ status }) ;
-    res.send(data)
-})
-
-/* 修改all数据 */
-Router.put('/select',async(req,res)=>{
-    //console.log(req.body,"jinlia后端")
-    let data = await amendall(colName2,req.body) ;
-    res.send(data)
-})
-
-Router.put('/select1',async(req,res)=>{
-    //console.log(req.body,"jinlia后端")
-    let data = await amendall1(colName2,req.body) ;
-    res.send(data)
-})
 
 module.exports = Router ; 

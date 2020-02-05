@@ -1,21 +1,17 @@
 export default {
     state:{
         user:{
-            Authorization:'888uh8877&&*8',
-            username:'xiaopeng'
+            // Authorization,
+            // username
 
         }
     },
     matetions:{
-        login(state,{Authorization,username}){
-            state.user.username = username
-            state.user.Authorization = Authorization
-            console.log('vuex denglu')
+        login(state){
+            state.user
         },
         logout(state){
-            state.user.username = ''
-            state.user.Authorization = ''
-            console.log('vuex 退出')
+            state.user
         }
     },
 
