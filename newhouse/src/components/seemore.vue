@@ -1,5 +1,5 @@
 <template>
-    <a href="/searchhouse" class="bottom-box">
+    <a href="#" class="bottom-box" @click.prevent="$router.push('/searh')">
         <button class="bottom-btn">想了解更多，请点击这里</button>
     </a>
 </template>

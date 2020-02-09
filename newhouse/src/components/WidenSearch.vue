@@ -6,7 +6,7 @@
         <Retreat v-slot:retreat >
             <van-icon name="arrow-left" />
         </Retreat>
-        <van-search placeholder="请输入搜索关键词"  v-model="value"/>
+        <van-search placeholder="请输入搜索关键词"  v-model="value" />
     </div>
     <Sort></Sort>
 </div>

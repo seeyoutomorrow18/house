@@ -1,7 +1,7 @@
 <template>
     <div class="beforeList">
         <ul>
-            <li v-for="(item) in houseData"  :key='item.goodsCode'>
+            <li v-for="(item) in houseData"  :key='item.goodsCode' @click='details(item.GoodsCode,)'>
                 <div class="imgbox">
                     <img :src="item.imageUrl" lazy="loaded">
                     <span>推荐看房</span>
@@ -32,12 +32,16 @@ export default {
             houseData:[]
         }
     },
-
+    methods:{
+        details(GoodsCode){
+           this.$router.push({path:'/details',query:{GoodsCode}})
+        },
+    },
     async created(){
         let {data}=await this.$axios.get('https://newhouseapi.apyfc.com/api/Selected/IndexV2');
-        console.log(data);
+        /* console.log(data); */
         this.houseData=data.data.houseData.splice(0,10);
-        console.log(this.houseData,'564554');
+        /* console.log(this.houseData,'564554'); */
         
     }
 }

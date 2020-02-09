@@ -1,5 +1,11 @@
 <template>
     <div class="beforeList">
+    <van-dropdown-menu>
+        <van-dropdown-item v-model="value1" :options="option1" />
+        <van-dropdown-item v-model="value2" :options="option2"  @change='price()'/>
+        <van-dropdown-item v-model="value3" :options="option3"  @change='house()'/>
+        <van-dropdown-item v-model="value4" :options="option4" />
+    </van-dropdown-menu>
         <ul>
             <li v-for="item in houseData"  :key='item.GoodsCode'  @click='details(item.GoodsCode,)'>
                 <div class="imgbox">
@@ -25,10 +31,15 @@
             <input type="text" name="" id="page" v-model="page" @keyup.13="To()">
             <input type="button" :class="{active:Next}" value='   下一页   ' id='next' @click="next()">
         </div>
-    </div>
+</div>
 </template>
 
 <script>
+import Vue from 'vue';
+import { DropdownMenu, DropdownItem } from 'vant';
+
+Vue.use(DropdownMenu);
+Vue.use(DropdownItem);
 
 export default {
     data(){
@@ -39,7 +50,49 @@ export default {
             Prev:false,
             Next:false,
             min:0,
-            max:25000
+            max:25000,
+            //条件
+            value1: 0,
+            value2: 0,
+            value3: 0,
+            value4: 0,
+
+            option1: [
+                { text: '区域', value: 0 },
+                { text: '北京', value: 1 },
+                { text: '太原', value: 2 },
+                { text: '广州', value: 3 },
+                { text: '西安', value: 4 },
+                { text: '大连', value: 5 },
+                { text: '三亚', value: 6 },
+                { text: '桂林', value: 7 },
+                { text: '贵港', value: 8 },
+
+            ],
+            option2: [
+                { text: '价格', value: 0 },
+                { text: '10000元/㎡以下', value: 1 },
+                { text: '10000元/㎡-15000元/㎡', value: 2 },
+                { text: '15000元/㎡-20000元/㎡', value: 3 },
+                { text: '20000元/㎡-25000元/㎡', value: 4 },
+                { text: '25000元/㎡-30000元/㎡', value: 5 },
+                { text: '30000元/㎡以上', value:6 },
+
+
+            ],
+            option3: [
+                { text: '商铺', value: 0 },
+                { text: '不限', value: 1 },
+                { text: '一房', value: 2 },
+                { text: '二房', value: 3 },
+                { text: '三房', value: 4 },
+                { text: '四房', value: 5 },
+
+            ],
+            option4: [
+                { text: '更多', value: 0 },
+                { text: '没有更多了', value: 1 },
+            ],
         }
     },
 
@@ -47,7 +100,6 @@ export default {
 
         let {data}=await this.$axios.get(`http://localhost:3000/goods/list?min=${this.min}&max=${this.max}&page=${this.page}&num=${this.num}`);
         this.houseData=data
-        console.log(this.houseData,'564554');
         this.prev();
         this.next();
         this.To()
@@ -58,11 +110,7 @@ export default {
         },
         async prev(){
             this.Next=false;
-            console.log(this.Next);
-            
-            
             this.Prev=true
-            console.log(this.Prev);
             this.page--
             if(this.page<=7&&this.page>0){
                 let {data}=await this.$axios.get(`http://localhost:3000/goods/list?min=${this.min}&max=${this.max}&page=${this.page}&num=${this.num}`);
@@ -74,11 +122,7 @@ export default {
         },
         async next(){
             this.Prev=false
-            console.log(this.Prev);
-
             this.Next=true;
-            console.log(this.Next);
-            
             this.page++
             if(this.page<=7&&this.page>0){
                 let {data}=await this.$axios.get(`http://localhost:3000/goods/list?min=${this.min}&max=${this.max}&page=${this.page}&num=${this.num}`);
@@ -95,6 +139,66 @@ export default {
                 this.houseData=data
             }
            
+        },
+        async price(){
+            console.log(66666);
+            
+            if(this.value2==1){
+                console.log(1);
+                
+                this.min=0;
+                this.max=10000;
+                let {data}=await this.$axios.get(`http://localhost:3000/goods/list?min=${this.min}&max=${this.max}&page=${this.page}&num=${this.num}`); 
+                this.houseData=data
+            }else if(this.value2==2){
+                console.log(2);
+
+                this.min=10000;
+                this.max=15000;
+                let {data}=await this.$axios.get(`http://localhost:3000/goods/list?min=${this.min}&max=${this.max}&page=${this.page}&num=${this.num}`); 
+                this.houseData=data
+            }else if(this.value2==3){
+                console.log(3);
+
+                this.min=15000;
+                this.max=20000;
+                let {data}=await this.$axios.get(`http://localhost:3000/goods/list?min=${this.min}&max=${this.max}&page=${this.page}&num=${this.num}`); 
+                this.houseData=data
+            }else if(this.value2==4){
+                console.log(3);
+
+                this.min=20000;
+                this.max=25000;
+                let {data}=await this.$axios.get(`http://localhost:3000/goods/list?min=${this.min}&max=${this.max}&page=${this.page}&num=${this.num}`); 
+                this.houseData=data
+            }else if(this.value2==5){
+                this.min=25000;
+                this.max=30000;
+                let {data}=await this.$axios.get(`http://localhost:3000/goods/list?min=${this.min}&max=${this.max}&page=${this.page}&num=${this.num}`); 
+                this.houseData=data
+            }else if(this.value2==6){
+                this.min=30000;
+                this.max=60000;
+                let {data}=await this.$axios.get(`http://localhost:3000/goods/list?min=${this.min}&max=${this.max}&page=${this.page}&num=${this.num}`); 
+                this.houseData=data
+            }
+        },
+        async house(){
+            if(this.value3==1){
+                console.log(1);
+                
+                this.min=0;
+                this.max=10000;
+                let {data}=await this.$axios.get(`http://localhost:3000/goods/list?min=${this.min}&max=${this.max}&page=${this.page}&num=${this.num}`); 
+                this.houseData=data
+            }else if(this.value3==2){
+                console.log(2);
+
+                this.min=10000;
+                this.max=15000;
+                let {data}=await this.$axios.get(`http://localhost:3000/goods/list?min=${this.min}&max=${this.max}&page=${this.page}&num=${this.num}`); 
+                this.houseData=data
+            }            
         }
     }
 }
@@ -104,6 +208,13 @@ export default {
 <style lang='scss' scoped>
 .beforeList{
     padding: 0 13.54px;
+    .van-dropdown-menu{
+        box-shadow: inset 0 0.18519rem 0.37037rem -0.23148rem rgba(66,60,60,.2);
+
+    }
+            .van-dropdown-item__option {
+            text-align: center;
+        }
     ul{
         li{
             align-items: center;

@@ -1,17 +1,13 @@
 <template>
     <div class="HousePrices">
         <div class="title-top">
-            <slot name="title-housePrice"></slot>
+            <slot ></slot>
             <slot name='icon'></slot>
             <slot name='Hot-property'></slot>
             <slot name='new-headlines' ></slot>
             <slot name='Tools'></slot>
             <slot name='discounts'></slot>
             <slot name='recommend'></slot>
-
-
-
-
         </div>
     </div>
 </template>

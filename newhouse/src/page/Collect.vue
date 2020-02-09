@@ -8,54 +8,48 @@
                 <span><van-icon name="search" /></span>
                 <input type="text" placeholder="楼盘搜索">
             </div>
-            <Emoji v-slot:emoji>
-            完成
+            <Emoji v-slot:emoji  @click.native="alter" >
+            {{ text }}
             </Emoji>
         </div>
 
         <div class="contentList clearfix">
-            <div class="flex-box clearfix">
-                <div class="leftbox fl">
-                    <span class="collectborder"><van-icon name="passed" size="21" color="blue" /></span>
+            <div class="flex-box clearfix" v-for="item in cartlist" :key="item.GoodsCode" @click='details(item.GoodsCode,)'>
+                <div class="leftbox fl" v-if="condition">
+                    <span :class="{collectborder:!Number(item.status)}" @click="hit(item.GoodsCode)" >
+                        <van-icon name="passed" size="21" color="blue" v-if="Number(item.status)" />
+                    </span>
+
                 </div>
                 <div class="housecatair fl">
                     <div class="imgbox">
-                        <img src="https://resource.apyfc.com/UploadImage/1/1/5002/2019/5/2019-05-11/201905111652274298635.jpg" alt="">
+                        <img :src="item.ImageUrl" alt="">
                     </div>
                     <div class="hosueinfo">
-                        <p class="main_title">金地卓越松湖悦湾</p>
-                        <p class="arear">东莞市东坑镇</p>
-                        <p class="house-price">17000元/m²</p>
+                        <p class="main_title">{{ item.GoodsEstate }}</p>
+                        <p class="arear">{{ item.AreaFullname }}</p>
+                        <p class="house-price">{{ item.AveragePrice }}</p>
                     </div>
                 </div>
             </div>
             
-            <div class="flex-box clearfix">
-                <div class="leftbox fl">
-                    <span class="collectborder"><van-icon name="passed" size="21" color="blue" /></span>
-                </div>
-                <div class="housecatair fl">
-                    <div class="imgbox">
-                        <img src="https://resource.apyfc.com/UploadImage/1/1/5002/2019/5/2019-05-11/201905111652274298635.jpg" alt="">
-                    </div>
-                    <div class="hosueinfo">
-                        <p class="main_title">金地卓越松湖悦湾</p>
-                        <p class="arear">东莞市东坑镇</p>
-                        <p class="house-price">17000元/m²</p>
-                    </div>
-                </div>
-            </div>
+            
             <div class="mescroll-upwarp">
                 <p class="upwarp-nodata">-- 没有更多了 --</p>
             </div>
         </div>
         
-        <div class="collectfooter">
+        <div class="collectfooter" v-if="condition">
             <div class="checkallbox">
-                <span><van-icon name="passed" size="21" color="blue" /></span>
-                <p>全选</p>
+                <span 
+                :class="{borderspan:!checkall1}" 
+                @click="handover" >
+                    <van-icon name="passed" size="21" color="blue" 
+                    v-if="checkall1" /></span>
+                <p>全选</p> 
             </div>
-            <div class="delectbox">删去</div>
+            <div class="delectbox" @click="cancel">删去</div>
+           
         </div>
     </div>
 </template>
@@ -71,11 +65,118 @@ export default {
     components:{
         Retreat,
         Emoji
-
+    },
+    data(){
+        return{
+            text:'管理',
+            condition:false,
+            checkall:false
+           /*  cartlist:[
+                {
+                   "GoodsCode" : "201808161027002262906", 
+                   "ImageUrl" : "https://resource.apyfc.com/UploadImage/NewHouse/1/5002/2018/8/2018-08-28/201808281156259077791.png",
+                   "GoodsEstate" : "盛和雅颂",
+                   "AreaFullname" : "东莞市横沥镇",
+                   "AveragePrice" : "15500元/㎡",
+                   "status": "0",
+                },
+                {
+                   "GoodsCode" : "201808161027002262907", 
+                   "ImageUrl" : "https://resource.apyfc.com/UploadImage/1/1/5002/2019/9/2019-09-25/201909251013259703620.jpg",
+                   "GoodsEstate" : "盛和雅颂",
+                   "AreaFullname" : "东莞市横沥镇",
+                   "AveragePrice" : "15500元/㎡",
+                   "status": "0",
+                },
+                {
+                   "GoodsCode" : "201808161027002262908", 
+                   "ImageUrl" : "https://resource.apyfc.com/UploadImage/1/1/5002/2019/10/2019-10-09/201910091541508754355.jpg",
+                   "GoodsEstate" : "盛和雅颂",
+                   "AreaFullname" : "东莞市横沥镇",
+                   "AveragePrice" : "15500元/㎡",
+                   "status": "0",
+                },
+                {
+                   "GoodsCode" : "2018081610270022629055", 
+                   "ImageUrl" : "https://resource.apyfc.com/UploadImage/1/1/5002/2019/10/2019-10-09/201910091541508754355.jpg",
+                   "GoodsEstate" : "盛和雅颂",
+                   "AreaFullname" : "东莞市横沥镇",
+                   "AveragePrice" : "15500元/㎡",
+                   "status": "0",
+                }
+            ] */
+        }
+    },
+    computed:{
+        cartlist(){
+            return this.$store.state.cart.cartlist
+        },
+        checkall1(){
+            return this.cartlist.every(ele=>ele.status=='1')
+        }
+    },
+    methods: {
+        alter(){
+            this.condition = !this.condition
+            if(this.condition){
+                this.text = '完成'
+            }else{
+                this.text = '管理'
+            }
+        },
+        details(GoodsCode){
+           this.$router.push({path:'/details',query:{GoodsCode}})
+        },
+        handover(){
+            this.checkall = !this.checkall
+            if(this.checkall){
+                this.$store.dispatch('deselectall',this.filtrate())
+            }else{
+                this.$store.dispatch('deselectall1',this.filtrate())
+            }
+            
+        },
+        find(GoodsCode){
+            return this.cartlist.find(item=>{
+                return item.GoodsCode == GoodsCode
+            })
+        },
+        filters(){
+            // return this.cartlist.filter(ele=>ele.status==1)
+            let o = {}
+            let data = this.cartlist.filter(ele=>ele.status==1)
+            data.forEach((element) => {
+                o[element.GoodsCode] = element.GoodsCode
+            });
+            return o
+        },
+        filtrate(){
+            let min = []
+            this.cartlist.map(ele=>{
+                min.push(ele.GoodsCode)
+            })
+            return  min
+        },
+        hit(GoodsCode){
+            
+            let { status } = this.find(GoodsCode)
+            if(status == 1 ){
+                status = String(0) 
+                //console.log(status,"勾变不购")
+            }else if(status == 0){
+                status = String(1) 
+                //console.log(status,"不勾变购")
+            }
+            this.$store.dispatch('modification',{GoodsCode,status})
+            /* console.log(list,"找到") */
+        },
+        cancel(){
+            this.$store.dispatch('expurgate',this.filters())
+            //console.log(this.filters(),"222")
+        }
     },
     async created(){
-        let {data }= await this.$axios.get('https://newhouseapi.apyfc.com/api/Selected/IndexV2') 
-        console.log(data,"11111111111111")
+        this.$store.dispatch('render')
     }
 }
 </script>
@@ -83,7 +184,7 @@ export default {
 <style lang="scss" scoped>
     .collect{
         width: 100%;
-        
+        background: #fff;
        /*  position: relative; */
         .collecttop{
             .seek{
@@ -98,7 +199,7 @@ export default {
                     float: left;
                     text-align: center;
                     line-height: 35px;
-                    background: #ccc;
+                    background: #f6f6f6 ;
                     .van-icon-search{
                         width: 6px;
                         height: 7px;
@@ -108,10 +209,9 @@ export default {
                 input{
                     width: 92%;
                     height: 27px;
-                    // background: #ccc;
-                    background: pink;
+                    background: #f6f6f6 ;
                     padding-left: 7px;
-                    //border-radius: 10% 0 10%  0 ;
+                    border-radius:   0 13px  13px 0    ;
                     float: left;
                 }
                 
@@ -193,6 +293,7 @@ export default {
             width: 100%;
             height: 51.38px;
             padding-left: 13.5px;
+            background: #fff;
             position: absolute;
             bottom: 0;
             z-index: 20000;
@@ -209,6 +310,9 @@ export default {
                     width: 21.83px;
                     height: 21.83px;
                     border-radius: 50%;
+                    
+                }
+                .borderspan{
                     border: 1px solid #ccc;
                 }
                 p{

@@ -34,9 +34,9 @@ export default {
 
     async created(){
         let {data}=await this.$axios.get('https://newhouseapi.apyfc.com/api/Selected/IndexV2');
-        console.log(data);
+        /* console.log(data); */
         this.houseData=data.data.houseData.splice(10,10);
-        console.log(this.houseData,'564554');
+        
         
     }
 }
